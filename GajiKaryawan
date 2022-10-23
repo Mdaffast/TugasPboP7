@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+    class GajiKaryawan {
+
+        private static double golongan;
+        private double pokok;
+        private double abdi;
+
+        public GajiKaryawan(int golongan) {
+            switch (golongan) {
+                case 1 -> {
+                    this.pokok = 1486500;
+                    this.abdi = 250000;
+                }
+                case 2 -> {
+                    this.pokok = 1926000;
+                    this.abdi = 300000;
+                }
+                case 3 ->{
+                    this.pokok = 2456700;
+                    this.abdi = 350000;
+                }
+                case 4 ->{
+                    this.pokok = 2899500;
+                    this.abdi =400000;
+                }
+                default -> {
+                    this.pokok = 0;
+                    this.abdi = 0;
+                }
+
+            }
+        }
+
+        public double pokok(){
+            return this.pokok;
+        }
+        public double abdi(){
+            return this.abdi;
+        }
+        public double gol(){
+            return this.golongan;
+        }
+        public double gaji_lembur(double diff){
+
+            double jamlembur = diff;
+            double gajilembur;
+            gajilembur = jamlembur-173;
+            double totlembur;
+            totlembur = gajilembur*20000;
+            return totlembur;
+
+        }
+        public void display(double diff){
+            double totgaji;
+            System.out.println("Gaji pokok = " +(pokok -(pokok *0.005)));
+            System.out.println("Tunjangan = " +(abdi-(abdi*0.005)));
+            totgaji = this.pokok + this.abdi +gaji_lembur(diff);
+            totgaji -= totgaji * 0.005;
+            System.out.println("Total Gaji = " +totgaji);
+        }
+
+        public static void main(String[] args) {
+            String nama;
+            System.out.println("-------------------------------");
+            System.out.println("Program menghitung gaji");
+            System.out.println("--------------------------------");
+            Scanner gaji = new Scanner(System.in);
+            System.out.print("Masukan Nama Anda = ");
+            nama = gaji.next();
+            System.out.print("Masukan Golongan Anda = ");
+            int gol = gaji.nextInt();
+            System.out.print("Masukan Jam Kerja Anda = ");
+            int clock = gaji.nextInt();
+            System.out.println();
+
+            GajiKaryawan daff = new GajiKaryawan(gol);
+            daff.display(clock);
+
+        }
+    }
